@@ -1,0 +1,35 @@
+本文件用来记录python的一些知识点:
+
+# python 单行注释
+'''
+python
+多行注释
+'''
+
+"""
+python
+多行注释
+"""
+# __init__.py文件用来声明文件所在的包下面的方法、类等内容的存在的
+'''
+1、在使用PyCharm新建python package时，会发现生成的包里，有__init__.py 这个文件，而且这文件是空的。
+删了就悲剧咯，这货算是package的一个标识，IDE就是通过它来判断package的。
+当然，它还有另外一个作用，暂且不提它，先说说__all__。
+2、Python中的包和模块有两种导入方式：精确导入和模糊导入
+以上图为例，精准导入，假如A.py里有函数A1()，A2()。此时B.py需要引用它们，可以如下：
+from hello.A import A1,A2假如方法比较多，或许会偷懒，用模糊导入： from hello.A import *
+而__all__，则可以控制*所表示要引入的东西（模块，函数，类等）：
+如果将__all__里的sayA2去掉，B.py里就会报sayA2查找不到的错误。
+3、__init__.py的用法：
+当然__all__也可以在__init__.py里声明，__init__.py是上图hello目录下的，
+可以理解为，该目录下py文件的函数都统一到__init__.py来声明
+此时B.py里只是引入hello目录，并未精准到py文件。
+
+'''
+
+
+class A():
+    # 定义类方法与普通函数不一样，定义类方法必须至少有一个参数
+    # 通常是self(可以改成其他，但是大家默认是self，虽然可以改，但不建议改)
+    def say(self, name):
+        print("heelo,test.py" + name, "\t", name)
